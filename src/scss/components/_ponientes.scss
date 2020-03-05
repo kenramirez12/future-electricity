@@ -1,0 +1,31 @@
+.ponientes-slider {
+  cursor: e-resize;
+}
+
+.poniente {
+  margin-right: 4rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &__body {
+    padding-top: 1.75rem;
+    max-width: 400px;
+  }
+  
+  &__fullname {
+    color: $white;
+    margin-bottom: 0;
+  }
+
+  &__avatar {
+    width: 100%;
+  }
+
+  &__job {
+    color: $gray-800;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}

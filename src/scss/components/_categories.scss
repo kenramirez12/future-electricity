@@ -1,0 +1,18 @@
+.category {
+  &__link {
+    display: block;
+    
+    &::before {
+      content: attr(data-number);
+      display: block;
+      margin-bottom: 1rem;
+      font-size: .75rem;
+      font-weight: 500;
+      color: $white;
+      
+      @include media-breakpoint-up('md') {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+}

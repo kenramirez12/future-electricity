@@ -1,8 +1,235 @@
 extends ../config/template
 append config
-  -pageTitle = 'Home'
-  -pageDescription = 'Pagina inicial de EDboilerplate'
-  -pageImage = 'https://ed.team/sites/default/files/EDboilerplate-logo.png'
+  //- -pageTitle = 'Home'
+  -pageDescription = 'The Future of Electricity es una experiencia única que inspira a profesionales y compañias a darle vida a ideas innovadoras, transformando el futuro de la industria eléctrica.'
+  -pageImage = '/main-graph.png'
+  -presenters = [{name: 'Pedro Sanchez',job: 'the world bank',slug: 'assets/img/ponentes/PedroSanchez.jpg'},{name: 'Simone Bottom',job: 'gerente de infraestructura y redes de enel distribución perú',slug: 'assets/img/ponentes/SimoneBotton.jpg'},{name: 'Gustavo Malagoli',job: 'presidente de alsol energías renovávies',slug: 'assets/img/ponentes/GustavoMalagoli.jpg'},{name: 'Daniel Cámac',job: 'deputy country manager en engie perú',slug: 'assets/img/ponentes/DanielCamac.jpg'},{name: 'Edwin Zorrilla',job: 'sales manager - abb',slug: 'assets/img/ponentes/EdwinZorrilla.jpg'},{name: 'Roberto Obradovich',job: 'country manager peru -byd',slug: 'assets/img/ponentes/RobertoObradovich.jpg'},{name: 'Rafael Carvallo',job: 'consultor en mercado eléctrico',slug: 'assets/img/ponentes/RafaelCarvallo.jpg'},{name: 'Junsung Kim',job: 'primer secretario y responsable de la cooperación en tic y ciudades inteligentes',slug: 'assets/img/ponentes/JunsungKim.jpg'},{name: 'Iván Saavedra',job: 'consultor energético internacional',slug: 'assets/img/ponentes/IvanSaavedra.jpg'},{name: 'Daniel Salazar',job: 'asesor y consultor independiente',slug: 'assets/img/ponentes/DanielSalazar.jpg'},{name: 'Cristiano Bühler',job: 'ingeniero en reivax automatización y control S/A',slug: 'assets/img/ponentes/CristianoBuhler.jpg'},{name: 'Edwin San Román',job: 'gerente general de electroperú',slug: 'assets/img/ponentes/EdwinSanRoman.jpg'},{name: 'Severo Buenalaya',job: 'gerente de generación y transmisión eléctrica - osinergmin',slug: 'assets/img/ponentes/SeveroBuenalaya.jpg'},{name: 'Eduardo Soto',job: 'ceo - phineal',slug: 'assets/img/ponentes/EduardoSoto.jpg'},{name: 'Paul Sumar',job: 'abogado especializado en energía',slug: 'assets/img/ponentes/PaulSumar.jpg'},{name: 'Carlos Fossati',job: 'director comercial de kallpa',slug: 'assets/img/ponentes/CarlosFossati.jpg'},{name: 'Alejandro Barragan',job: 'gerente general de enel x perú',slug: 'assets/img/ponentes/AlejandroBarragan.jpg'},{name: 'Luis Grajeda',job: 'gerente distribución eléctrica osinergmin',slug: 'assets/img/ponentes/LuisGrajeda.jpg'}];
 
 block main
-  include ../includes/main-menu
+  #preloader
+    .preloader
+      - n = 5
+        .w: while n--
+          .tw: .t
+  
+  .reel-video#reel-video
+    video#reel-video-element(src="assets/reel_esedor_webm.webm" loop="loop")
+
+  video.section-video__video(src="assets/loop_thefuture.mp4" autoplay="true" loop="loop" muted="true")
+  <img id="play-btn-cursor" class="play-btn-cursor" src="assets/img/play-btn.png"/>
+  section.section.bg-secondary.section-hero
+    .container-fluid.py-5.mt-auto
+      .row.pb-3
+        .col-md-6.d-md-none(data-aos="fade-up")
+          h1.text-white.font-weight-light.pb-3 The Future<br>of Electricity
+          span.d-block.text-white.lead.font-weight-light 16.17.18 Abril<br>2020 Cusco
+          
+        .col-md-6.d-none.d-md-block
+          h1.text-white.display-3.pb-5(data-aos="fade-up") The Future<br>of Electricity
+          span.d-block.pt-5.text-white.h2.font-weight-light(data-aos="fade-up" data-aos-delay="200") 11.12.13 Abril<br>2020 Cusco
+        
+        .col-md-6.d-flex.flex-column
+          div.ml-md-auto(data-aos="fade-up" data-aos-delay="0")
+            a.text-white.hero-link.registerModalBtn(href="#" data-toggle="modal" data-target="#registerModal")
+              .hero-link__body
+                span.font-weight-medium Registrate al evento
+                p.font-weight-light.small.mt-2 Las entradas en preventa tienen una oferta especial
+              img.hero-link__arrow.ml-3.d-md-none(src="assets/img/arrow-white-sm.png")
+              img.hero-link__arrow.ml-3.d-none.d-md-inline-block(src="assets/img/arrow-white.png")
+                
+          div.ml-md-auto( data-aos="fade-up" data-aos-delay="200")
+            a.text-white.hero-link.sponsorsModalBtn(href="#" data-toggle="modal" data-target="#sponsorsModal")
+              .hero-link__body
+                span.font-weight-medium Se un Sponsor
+                p.font-weight-light.small.mt-2 Forma parte de una red de compañías innovadoras
+              img.hero-link__arrow.ml-3.d-md-none(src="assets/img/arrow-white-sm.png")
+              img.hero-link__arrow.ml-3.d-none.d-md-inline-block(src="assets/img/arrow-white.png")
+    <canvas id="hero-canvas"></canvas>
+
+  section.section-video#video-container
+    <div class="cursor"></div>
+    <div class="pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="5.333" height="8" viewBox="0 0 5.333 8" class="triangle">
+        <path id="Tracé_1" data-name="Tracé 1" d="M160,168v8l5.333-4.265Z" transform="translate(-160 -168)"/>
+      </svg>
+    </div> 
+    //- .container-fluid.text-center
+      //- span.display-2.text-white.font-weight-lighter.video-canvas VER EL REEL
+
+  section.bg-white
+  
+  section.section.bg-secondary
+    .container-fluid.py-5.my-auto
+      .row.pb-5
+        .col
+          span.d-block.font-weight-medium.mb-5.pb-5.text-white The Future of Electricity
+      .row
+        .col-md-6.pb-5.pb-md-0
+          h3.h1.font-weight-lighter.mb-5.text-white.d-md-none(data-aos="fade-up") Galería de<br>Fotos 2019
+          h3.display-1.font-weight-lighter.mb-5.text-white.d-none.d-md-block(data-aos="fade-up") Galería de<br>Fotos 2019
+        .col-md-6.text-md-right(data-aos="fade-up" data-aos-delay="200")
+          a.text-white.translate-on-hover(href="#") Ver todas las fotos
+            img.ml-5.d-md-none(src="assets/img/arrow-white-sm.png")
+            img.ml-5.d-none.d-md-inline-block(src="assets/img/arrow-white.png")
+
+  section.section-gallery.bg-secondary
+    .container-fluid.px-0
+      .row.no-gutters#lightgallery
+        .col-md-6.gallery-item(data-aos="fade-up" data-aos-delay="0" data-src="assets/img/galeria/gallery-01.jpg")
+          picture(data-src="assets/img/galeria/gallery-01.jpg")
+            source.w-100.img-responsive(media="(min-width: 768px)" srcset="assets/img/galeria/gallery-01.jpg")
+            img.item.gallery-item__image.w-100(src="assets/img/galeria/responsive/gallery-01.jpg")
+        .col-md-6.gallery-item(data-aos="fade-up" data-aos-delay="200" data-src="assets/img/galeria/gallery-02.jpg")
+          picture
+            source.w-100.img-responsive(media="(min-width: 768px)" srcset="assets/img/galeria/gallery-02.jpg")
+            img.item.gallery-item__image.w-100(src="assets/img/galeria/responsive/gallery-02.jpg")
+        .col-md-6.gallery-item(data-aos="fade-up" data-aos-delay="0" data-src="assets/img/galeria/gallery-03.jpg")
+          picture
+            source.w-100.img-responsive(media="(min-width: 768px)" srcset="assets/img/galeria/gallery-03.jpg")
+            img.item.gallery-item__image.w-100(src="assets/img/galeria/responsive/gallery-03.jpg")
+        .col-md-6.gallery-item(data-aos="fade-up" data-aos-delay="200" data-src="assets/img/galeria/gallery-04.jpg")
+          picture
+            source.w-100.img-responsive(media="(min-width: 768px)" srcset="assets/img/galeria/gallery-04.jpg")
+            img.item.gallery-item__image.w-100(src="assets/img/galeria/responsive/gallery-04.jpg", alt="")
+        .col-md-6.gallery-item(data-aos="fade-up" data-aos-delay="0" data-src="assets/img/galeria/gallery-05.jpg")
+          picture
+            source.w-100.img-responsive(media="(min-width: 768px)" srcset="assets/img/galeria/gallery-05.jpg")
+            img.item.gallery-item__image.w-100(src="assets/img/galeria/responsive/gallery-05.jpg", alt="")
+        .col-md-6.d-none.d-md-block.gallery-item(data-src="assets/img/galeria/gallery-06.jpg")
+          img.item.gallery-item__image.w-100.img-responsive(src="assets/img/galeria/gallery-06.jpg", alt="")
+
+  section.section.py-5.bg-white#nosotros
+    .container-fluid.my-auto
+      .row
+        .col
+          span.d-block.font-weight-medium.mb-5 Nosotros
+          h3.h1.font-weight-lighter.mb-5.d-md-none(data-aos="fade-up") Más que una<br>conferencia.
+          h3.display-1.font-weight-lighter.mb-5.d-none.d-md-block(data-aos="fade-up") Más que una<br>conferencia.
+          p.font-weight-light.about__copy(data-aos="fade-up") The Future of Electricity es una experiencia única que inspira a profesionales y compañias a darle vida a ideas innovadoras, transformando el futuro de la industria eléctrica.
+
+  section.section.py-5.bg-secondary
+    .container-fluid.my-auto.pr-0
+      .row.mx-0
+        .col.px-0
+          span.d-block.font-weight-medium.mb-5.text-white Ponentes 2019
+      .row.mx-0
+        .col.px-0
+          #ponientes-slider.ponientes-slider
+            //- .fake-item.d-md-none(style="width: 7rem")
+            for presenter, index in presenters
+              .poniente(data-aos="fade-up" data-aos-delay=index*50)
+                img.poniente__avatar(src=presenter.slug, alt=presenter.name)
+                .poniente__body
+                  h4.poniente__fullname=presenter.name
+                  span.poniente__job=presenter.job
+            .poniente.d-none.d-md-block
+              img.poniente__avatar(style="opacity:0" src="assets/img/expositores/expositor-03.png", alt="")
+
+  section.bg-white.py-5#sponsors
+    .container-fluid
+      .row
+        .col
+          h2.font-weight-lighter.mb-5.d-md-none(data-aos="fade-up") Sponsors
+          h3.display-1.font-weight-lighter.mb-5.d-none.d-md-block(data-aos="fade-up") Sponsors
+      .row
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="0")
+          img.img-fluid(src="assets/img/sponsors/ENEL.png", alt="Enel X")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="50")
+          img.img-fluid(src="assets/img/sponsors/XMLID-1-2.png", alt="Kallpa")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="100")
+          img.img-fluid(src="assets/img/sponsors/XMLID-1-7.png", alt="Engie")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="150")
+          img.img-fluid(src="assets/img/sponsors/ABB.png", alt="ABB")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="200")
+          img.img-fluid(src="assets/img/sponsors/ALSOL.png", alt="Alsol")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="250")
+          img.img-fluid(src="assets/img/sponsors/BID.png", alt="BYD")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="0")
+          img.img-fluid(src="assets/img/sponsors/XMLID-1.png", alt="Phineal")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="50")
+          img.img-fluid(src="assets/img/sponsors/XMLID-1-5.png", alt="Reivax")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="100")
+          img.img-fluid(src="assets/img/sponsors/XMLID-1-4.png", alt="Ergon Power")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="150")
+          img.img-fluid(src="assets/img/sponsors/ElectroSurEste.png", alt="Electro Sur Este")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="200")
+          img.img-fluid(src="assets/img/sponsors/XMLID-1-8.png", alt="Enel")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="250")
+          img.img-fluid(src="assets/img/sponsors/XMLID-1-1.png", alt="Santivañez Abogados")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="0")
+          img.img-fluid(src="assets/img/sponsors/XMLID-1-6.png", alt="SudaEner")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="50")
+          img.img-fluid(src="assets/img/sponsors/TELEFERICO.png", alt="Teleférico Huchuy Qosqo")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="100")
+          img.img-fluid(src="assets/img/sponsors/Egemsa.png", alt="Egemsa")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="150")
+          img.img-fluid(src="assets/img/sponsors/MercadoEnergia.png", alt="Mercado Energía")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="200")
+          img.img-fluid(src="assets/img/sponsors/MinisterioEnerMin.png", alt="Enermin" title="Ministerio de Energía y Minas del Perú")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="250")
+          img.img-fluid(src="assets/img/sponsors/Corea.png", alt="Embajada de la República de Corea en Perú")
+        .col-4.col-md-3.col-lg-2.d-flex.align-items-center.my-4(data-aos="fade-up" data-aos-delay="0")
+          img.img-fluid(src="assets/img/sponsors/Cusco.png", alt="Municipalidad Provincial del Cusco")
+
+  section.bg-secondary.py-5#seminarios
+    .container-fluid.py-5
+      .row
+        .col
+          span.d-block.font-weight-medium.mb-4.text-white Nuestras Categorías
+      .row
+        .col-md-6.mt-5.mb-3.mt-md-5(data-aos="fade-up")
+          a.category__link(href="#" data-number="")
+            .h2.text-white.font-weight-light.d-md-none Smartcity
+            .display-4.text-white.font-weight-light.d-none.d-md-block Smartcity
+            span.text-light.d-none Saber Más
+        .col-md-6.my-3.my-md-5(data-aos="fade-up" data-aos-delay="200")
+          a.category__link(href="#" data-number="")
+            .h2.text-white.font-weight-light.d-md-none Blockchain
+            .display-4.text-white.font-weight-light.d-none.d-md-block Blockchain
+            span.text-light.d-none Saber Más
+        .col-md-6.my-3.my-md-5(data-aos="fade-up")
+          a.category__link(href="#" data-number="")
+            .h2.text-white.font-weight-light.d-md-none Electromovilidad
+            .display-4.text-white.font-weight-light.d-none.d-md-block Electromovilidad
+            span.text-light.d-none Saber Más
+        .col-md-6.my-3.my-md-5(data-aos="fade-up" data-aos-delay="200")
+          a.category__link(href="#" data-number="")
+            .h2.text-white.font-weight-light.d-md-none Generación Distribuida
+            .display-4.text-white.font-weight-light.d-none.d-md-block Generación Distribuida
+            span.text-light.d-none Saber Más
+        .col-md-6.my-3.my-md-5(data-aos="fade-up")
+          a.category__link(href="#" data-number="")
+            .h2.text-white.font-weight-light.d-md-none Storage
+            .display-4.text-white.font-weight-light.d-none.d-md-block Storage
+            span.text-light.d-none Saber Más
+        .col-md-6.my-3.my-md-5(data-aos="fade-up" data-aos-delay="200")
+          a.category__link(href="#" data-number="")
+            .h2.text-white.font-weight-light.d-md-none Inteligencia Artificial
+            .display-4.text-white.font-weight-light.d-none.d-md-block Inteligencia Artificial
+            span.text-light.d-none Saber Más
+
+  <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-body py-0">
+          <iframe src="https://services.cognitoforms.com/f/cM2TiyybuEqJ2nvbECa5rA?id=1" style="position:relative;width:1px;min-width:100%;height:551px" frameborder="0" scrolling="yes" seamless="seamless" height="551" width="100%"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="sponsorsModal" tabindex="-1" role="dialog" aria-labelledby="sponsorsModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-body py-0">
+          <iframe src="https://services.cognitoforms.com/f/cM2TiyybuEqJ2nvbECa5rA?id=2" style="position:relative;width:1px;min-width:100%;*width:100%;height:561px" frameborder="0" scrolling="yes" seamless="seamless" height="561" width="100%"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>

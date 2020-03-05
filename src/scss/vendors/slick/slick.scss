@@ -74,6 +74,10 @@
     &.slick-loading img {
         display: none;
     }
+    
+    &:focus {
+        outline: none;
+    }
 
     display: none;
 

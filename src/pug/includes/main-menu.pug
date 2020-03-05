@@ -1,9 +1,15 @@
-nav.main-menu(itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation")#main-menu
-  ul
-    each page in pages
-      li.main-menu__item(itemprop="url")
-          a.main-menu__link(href=page.url itemprop="name")= page.title
-            if page.child.length > 0
-              ul 
-                each page2 in page.child
-                  li: a(href= page2.url)= page2.title
+.navigation.d-flex
+  .navigation--stripe
+  .navigation--stripe
+    ul.list-inline.my-auto.ml-5.pl-5
+      li.list-inline-item: a.menu-link(href="#seminarios") Seminarios
+      li.list-inline-item: a.menu-link(href="#sponsors") Sponsors
+      li.list-inline-item: a.menu-link(href="#nosotros") Nosotros
+      li.list-inline-item: a.menu-link(href="#contacto") Contacto
+  .navigation--stripe
+nav.main-nav
+  .toggle-btn
+    span
+    span
+    span
+  //- img.navigation-toggle(src="assets/img/menu-icon.png")

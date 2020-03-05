@@ -3,24 +3,258 @@ block config
 doctype html
 html(lang="es")
   head
-    title= pageTitle + " | My Website"
+    title The Future of Electricity 2020
     meta(charset="utf-8")
-    meta(name="viewport" content="initial-scale=1.0, width=device-width")
-    meta(name="twitter:card" content="summary_large_image")
-    meta(name="twitter:site" content=twitterAccount)
-    meta(property="og:title" content=pageTitle)
+    meta(name="viewport" content="initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, width=device-width")
+    meta(property="og:title" content="The Future of Electricity 2020")
     meta(property="og:description" content=pageDescription)
-    meta(property="og:image" content=pageImage)
-    link(rel="stylesheet" href="assets/css/styles.css")
+    meta(property="og:image" content="https://mercadoenergia.com/evento/assets/img" + pageImage)
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500&display=swap" rel="stylesheet">
+    link(rel="stylesheet" href="assets/css/aos.css")
+    link(rel="stylesheet" href="assets/css/styles.css?v=1.0.8")
+    link(rel="stylesheet" href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css")
     link(rel="shortcut icon" href="img/favicon.png")
-    
+    <script src="https://services.cognitoforms.com/scripts/embed.js"></script>
   body
-    include ../includes/header
     include ../includes/main-menu
     block main
     include ../includes/footer
 
-    //- script(src="assets/js/vendors/jquery.min.js")
-    //- script(src="assets/js/vendors/bootstrap.min.js")
-    //- script(src="assets/js/vendors/slick.min.js")
-    script(src="assets/js/main.js")
+    script(src="assets/js/vendors/jquery.min.js")
+    script(src="assets/js/vendors/bootstrap.bundle.min.js")
+    script(src="assets/js/vendors/slick.min.js")
+    script(src="assets/js/aos.js")
+    script(src="assets/js/main.js?v=1.0.5")
+    script(src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js")
+    script(src="https://cdn.rawgit.com/sachinchoolur/lg-thumbnail.js/master/dist/lg-thumbnail.js")
+    script(src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js")
+    script(src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js")
+    script(src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js")
+    script(src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js")
+    script(src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js")
+    
+    script.
+      AOS.init();
+
+      window.addEventListener('load', function() {
+        AOS.refresh()
+        $('#preloader').fadeOut();
+      })
+      //- luxy.init();
+
+      // left: 37, up: 38, right: 39, down: 40,
+      // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+      var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+      function preventDefault(e) {
+        e = e || window.event;
+        if (e.preventDefault)
+            e.preventDefault();
+        e.returnValue = false;  
+      }
+
+      function preventDefaultForScrollKeys(e) {
+          if (keys[e.keyCode]) {
+              preventDefault(e);
+              return false;
+          }
+      }
+
+      function disableScroll() {
+        if (window.addEventListener) // older FF
+            window.addEventListener('DOMMouseScroll', preventDefault, false);
+        document.addEventListener('wheel', preventDefault, {passive: false}); // Disable scrolling in Chrome
+        window.onwheel = preventDefault; // modern standard
+        window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+        window.ontouchmove  = preventDefault; // mobile
+        document.onkeydown  = preventDefaultForScrollKeys;
+      }
+
+      function enableScroll() {
+          if (window.removeEventListener)
+              window.removeEventListener('DOMMouseScroll', preventDefault, false);
+          document.removeEventListener('wheel', preventDefault, {passive: false}); // Enable scrolling in Chrome
+          window.onmousewheel = document.onmousewheel = null; 
+          window.onwheel = null; 
+          window.ontouchmove = null;  
+          document.onkeydown = null;  
+      }
+
+      const videoContainer = document.getElementById('video-container'),
+            reelVideo = document.getElementById('reel-video'),
+            reelVideoElement = document.getElementById('reel-video-element')
+
+      videoContainer.addEventListener('click', () => {
+        disableScroll()
+        reelVideo.classList.add('active')
+        reelVideoElement.play()
+      })
+
+      reelVideo.addEventListener('click', () => {
+        enableScroll()
+        reelVideo.classList.remove('active')
+        reelVideoElement.pause()
+      })
+
+      // Cursor and pointer
+      const cursor = document.querySelector('.cursor');
+      const pointer = document.querySelector('.pointer');
+
+      document.addEventListener('mousemove', e => {
+        //- console.log('eerrrr', e.target);
+        //- console.log(e.pageY);
+        cursor.setAttribute("style", "top: "+(e.pageY - 15)+"px; left: "+(e.pageX - 15)+"px;")
+        pointer.setAttribute("style", "top: "+(e.pageY - 5)+"px; left: "+(e.pageX - 5)+"px;")
+      });
+
+
+      // Menu toggle
+      const bodyElement = document.body;
+      //- const navigationToggle = document.querySelector(".navigation-toggle");
+      const navigationToggle = document.querySelector(".main-nav");
+      const navigation = document.querySelector(".navigation");
+
+      navigationToggle.addEventListener("click", () => {
+        (navigationToggle.classList.contains('active')) ? navigationToggle.classList.remove('active') : navigationToggle.classList.add('active')
+        if(bodyElement.classList.contains('navigation-open')) {
+          setTimeout(() => {
+            enableScroll()
+            navigation.style.zIndex = -1
+          }, 500)
+        } else {
+          navigation.style.zIndex = 2;
+          disableScroll()
+        }
+        bodyElement.classList.toggle("navigation-open");
+      })
+
+      // Canvas
+      window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+      onresize = function(){
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+      };
+
+      onmousemove = function(e){
+        var rect = canvas.getBoundingClientRect();
+        mouse = {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        };
+      };
+
+      onload = function (){
+        setTimeout(init,0);
+      };
+
+      init = function(){
+        canvas = document.querySelector('#hero-canvas');
+        ctx = canvas.getContext('2d');
+        onresize();
+        mouse = {
+          x: canvas.width/2,
+          y: canvas.height/2
+        };
+        particles = [];
+        for(var i=0;i<10000;i++){
+          particles.push({x:canvas.width*Math.random(),
+                          y:canvas.height*Math.random(),
+                          xv:Math.random()*20-10,
+                          yv:Math.random()*20-10});
+        }
+        requestAnimationFrame(loop);
+      };
+
+      loop = function(){
+        calculate();
+        draw();
+        requestAnimationFrame(loop);
+      };
+
+      calculate = function(){
+        for(var i=0;i<particles.length;i++){
+          var p = particles[i],
+              x = mouse.x-p.x,
+              y = mouse.y-p.y,
+              d2 = Math.pow((x*x+y*y)/200,1.5);
+          
+          d2 = d2>1000?d2:1000;
+          p.xv = (p.xv+5*x/d2)*0.99;
+          p.yv = (p.yv+5*y/d2)*0.99;
+          p.xv = p.x>0?p.x<canvas.width?p.xv:-Math.abs(p.xv):Math.abs(p.xv);
+          p.yv = p.y>0?p.y<canvas.height?p.yv:-Math.abs(p.yv):Math.abs(p.yv);
+          p.x += p.xv;
+          p.y += p.yv;
+        }
+      };
+
+      draw = function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle = 'rgba(255,255,255,0.25)'
+        for(var i=0;i<particles.length;i++){
+          var p = particles[i]
+          ctx.fillRect(p.x,p.y,1,1)
+        }
+      };
+
+      // Play button
+      const playBtnCursor = $('#play-btn-cursor')
+
+      $(document).ready(function() {
+        $('.menu-link').click(function(e) {
+          e.preventDefault()
+          let anchor = e.target.href
+          anchor = anchor.split('#')[1]
+
+          navigationToggle.click()
+          setTimeout(() => {
+            $('html,body').animate({scrollTop: $(`#${anchor}`).offset().top},'slow');
+          }, 300)
+        })
+
+        $('#ponientes-slider').slick({
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          arrows: false,
+          infinite: false,
+          //- centerMode: true,
+          //- variableWidth: true,
+          swipeToSlide: true,
+          responsive: [
+            {
+              breakpoint: 576,
+              settings: {
+                slidesToShow: 1,
+                centerMode: true
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2,
+                centerMode: true
+              }
+            }
+          ]
+        })
+      })
+
+      lightGallery(document.getElementById("lightgallery"), {
+        download: false,
+        counter: true,
+        loop: true,
+        escKey: true,
+        thumbnail: true,
+        currentPagerPosition:'middle',
+        pullCaptionUp:true,
+        fullScreen: true,
+        pager: false,
+        zoom: true,
+        actualSize: true,
+        hash: true,
+        share: false,
+        preload: 2,
+        autoplay: false,
+        autoplayControls: true
+      });
+

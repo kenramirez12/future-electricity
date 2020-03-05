@@ -1,7 +1,7 @@
 // Vendors
-// @import "vendors/bootstrap/bootstrap.scss";
-// @import "vendors/slick/slick.scss";
-// @import "vendors/slick/slick-theme.scss";
+@import "vendors/bootstrap/bootstrap.scss";
+@import "vendors/slick/slick.scss";
+@import "vendors/slick/slick-theme.scss";
 // @import "vendors/fontawesome/all.min.scss";
 
 // Config
@@ -19,6 +19,13 @@
 // MODULOS
 @import "components/buttons";
 @import "components/menus";
+@import "components/sections";
+@import "components/ponientes";
+@import "components/categories";
+@import "components/about";
+@import "components/hero";
+@import "components/gallery";
+@import "components/preloader";
 
 // Theme (colors and fonts)
 @import "theme/typography";

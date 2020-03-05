@@ -1,0 +1,48 @@
+.preloader {
+  background-color: $secondary;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999999999;
+}
+
+.w {
+  animation: r 10s linear infinite;
+  position: relative; width: 60px;
+  transform: translate(calc(-50% + 50vw), calc(-50% + 50vh));
+}
+
+.tw {
+  filter: blur(7px);
+  position: absolute;
+  mix-blend-mode: overlay;
+  transform-origin: 30px 30px;
+  
+  @for $i from 0 through 5 {
+    &:nth-child(#{$i}) {
+      color: hsla(360 / 5 * (1 + $i), 100%, 80%, 1);
+      transform: translateY(-30px) rotate(#{360deg / 5 * $i});
+    }
+  }
+}
+
+.t {
+  animation: t 4s infinite alternate;
+  border: 30px solid transparent;
+  border-bottom-color: currentColor;
+  height: 0;
+  transform-origin: -20px 30px;
+  width: 0;
+}
+
+@keyframes t {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(-44deg); }
+}
+
+@keyframes r {
+  0% { transform: translate(calc(-50% + 50vw), calc(-50% + 50vh)) rotate(0); }
+  100% { transform:translate(calc(-50% + 50vw), calc(-50% + 50vh)) rotate(360deg); }
+}

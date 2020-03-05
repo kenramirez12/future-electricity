@@ -1,0 +1,127 @@
+.section {
+  display: flex;
+  min-height: 100vh;
+
+  @include media-breakpoint-up('md') {
+    min-height: 85vh;
+  }
+}
+
+.section-hero {
+  .container-fluid {
+    z-index: 1;
+  }
+  
+  canvas{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 85vh;
+    background: $secondary;
+
+    @include media-breakpoint-up('md') {
+      display: block;
+    }
+  }
+}
+
+.section-gallery {
+  
+  @include media-breakpoint-up('md') {
+    margin-left: 4.5rem;
+  }
+}
+
+.reel-video {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateZ(0);
+  transition: opacity .8s cubic-bezier(.165,.84,.44,1),visibility .8s cubic-bezier(.165,.84,.44,1);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #000;
+  display: flex;
+  align-items:center;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 3;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.section-video__video {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.section-video {
+  // position: relative;
+  min-height: 100vh;
+  -webkit-background-attachment: fixed;
+  // background-image: url('../img/video-poster.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  
+  .container-fluid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover .pointer{
+    background: rgba($secondary, 0.8);
+  /*   width: 40px; */
+  /*   height: 40px; */
+    transform: scale(6);
+  }
+
+  &:hover .pointer .triangle {
+    fill: white;
+  /*   width: 40px; */
+  /*   height: 40px; */
+    transform: scale(.4);
+    top:-8px;
+    opacity: 1;
+  }
+  
+  &:hover .cursor{
+  /*   width: 40px; */
+  /*   height: 40px; */
+    transform: scale(0);
+    border: 1.4px solid white;
+  }
+}
+
+.play-btn-cursor {
+  position:absolute;
+  z-index: 1;
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+
+
+.triangle{
+  fill: white;
+  position:relative;
+  top:5px;
+  right: -25%;
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+  transform: scale(.4);
+}

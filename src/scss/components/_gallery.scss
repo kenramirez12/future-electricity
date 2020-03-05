@@ -1,0 +1,12 @@
+.gallery-item {
+  overflow: hidden;
+
+  &__image {
+    cursor: zoom-in;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
